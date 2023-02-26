@@ -33,8 +33,12 @@ function onGalleryContainerClick (event) {
   event.preventDefault();
 if(!event.target.classList.contains('gallery__image')) {
 return
-}
+} 
 
+const currentActiveImage = document.querySelector('img[data-scale= "1"]');
+ if(currentActiveImage) {
+  currentActiveImagel.classList.toggle('.is-active');
+}
 
 const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
 

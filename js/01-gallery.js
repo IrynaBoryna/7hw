@@ -32,48 +32,30 @@ galleryContainer.addEventListener("click", onGalleryContainerClick);
 
 
 function onGalleryContainerClick (event) {
-    event.preventDefault();
+  event.preventDefault();
 if(!event.target.classList.contains('gallery__image')) {
 return
 }
 
 const instance = basicLightbox.create(`
-    <div class="modal">
-    <img src="${event.target.dataset.source}" width="1100" height="700">
-    // <a>Close</a>
-     </div>
+  <div class="modal">
+  <img src="${event.target.dataset.source}" width="1100" height="700">
+
+   </div>
 `, 
 {
-    onShow: (instance) => {
-    document.addEventListener('keydown', (event) => {
-        if (event.code === 'Escape') {
-          // console.log(`натискається escape`);
-       instance.close } 
-         {once: true };
-      })
-  },
-        onClose: (instance) => {
-       galleryContainer.removeEventListener("click", instance);
-    }
-}
-)
+  onShow: (instance) => {
+    instance.element().querySelector('.modal').onclick = instance.close
+  }
+  // onClose: (instance) => {}
+})
 
-instance.show()  
+instance.show() 
 };
 
 
 
 
-
-
-
-// galleryContainer.addEventListener("click", onGalleryContainerClick);
-
-// function onGalleryContainerClick (event) {
-//   event.preventDefault();
-// if(!event.target.classList.contains('gallery__image')) {
-// return
-// }
 
 // const instance = basicLightbox.create(`
 //   <div class="modal">
@@ -81,16 +63,26 @@ instance.show()
 
 //    </div>
 // `, 
+
+
+
 // {
-//   onShow: (instance) => {},
-//   onClose: (instance) => {}
+//   onShow: (instance) => {
+//   document.addEventListener('keydown', (event) => {
+//       if (event.code === 'Escape') {
+//         console.log(`натискається escape`);
+//       instance.element().querySelector('.modal').keydown = instance.close,
+   
+//        {once: true };
+//   }})
+// },
+//   //     onClose: (instance) => {
+//     //  galleryContainer.removeEventListener("click", instance);
+//   // }
 // })
 
-// instance.show() 
+// instance.show()  
 // };
-
-
-
 
 
 
